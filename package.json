@@ -1,0 +1,22 @@
+{
+  "name": "mmyk",
+  "version": "1.0.0",
+  "description": "Hacker RU app",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mike-C25/MMYK.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mike-C25/MMYK/issues"
+  },
+  "homepage": "https://github.com/Mike-C25/MMYK#readme",
+  "dependencies": {
+    "superagent": "^3.6.3"
+  }
+}
