@@ -12,13 +12,13 @@ $(document).ready(function() {
     // }
 
     $.ajax({
-        url: 'https://api.reimaginebanking.com/accounts?key=e37a0183d9b8d2e386401e45ec9dab74',
+        url: 'http://api.reimaginebanking.com/accounts?key=e37a0183d9b8d2e386401e45ec9dab74',
         success: function(results) {
             console.log(results);
         }
     });
 
-    getUserInfo();
+    // getUserInfo();
 
     // var cardsContainer = $('#cards');
     // var card = $(callback)
