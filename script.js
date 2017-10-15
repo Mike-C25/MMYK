@@ -43,7 +43,7 @@ function branches() {
 
 // creation of URLs for calls
 function accCall(id,type){
-	return 'http://api.reimaginebanking.com/accounts/'+id+'/'+type+'?key=82446c11426cc53ba5813323d17460d4'
+	return 'http://api.reimaginebanking.com/accounts/'+id+'/'+type+'?key=e37a0183d9b8d2e386401e45ec9dab74'
 }
 
 function then(id,queue,types,info){
@@ -143,8 +143,9 @@ var callInterface = {
 
 //accounts();
 // console.log(getDate());
-callInterface['account']('59e23357a73e4942cdafe22e')
-//callInterface.bills("59e23357a73e4942cdafe22e",["deposits","loans","purchases","transfers","withdrawals"]);
+// callInterface['account']('59e23357a73e4942cdafe22e')
+callInterface.bills("59e23357a73e4942cdafe22d",["deposits","loans","purchases","transfers","withdrawals"]);
+callInterface.account("59e23357a73e4942cdafe22d");
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -159,6 +160,7 @@ callInterface['account']('59e23357a73e4942cdafe22e')
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // balance(types,info)
+/*
 balance('aaa',["bills","deposits","loans","purchases","transfers","withdrawals"],
 	[{
 	_id: "bills",
@@ -225,3 +227,4 @@ balance('aaa',["bills","deposits","loans","purchases","transfers","withdrawals"]
     description: "string"
 	}
 	]);
+*/
