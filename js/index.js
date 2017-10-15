@@ -43,7 +43,7 @@ $(document).ready(function() {
                         console.log(card);
                         var html = '<p id="accID">' + results[a].nickname + ": " + results[a]._id + '</p>' +
                             '<p class="rewards">' + 'Rewards #: ' + results[a].rewards + '</p>' +
-                            '<h2 class="balance">' + 'Balance: ' + convertWithCommas(results[a].balance) + '</h2>' +
+                            '<h2 class="balance">' + 'Balance: ' + convertWithCommas(results[a].balance.toFixed(2)) + '</h2>' +
                             '<p class="type">' + 'Type: ' + results[a].type + '</p>';
 
                         console.log(html);
