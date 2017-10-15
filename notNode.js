@@ -1,34 +1,8 @@
 //modules
- var request = require('superagent');
+// var request = require('superagent');
 
 //globals
 // var infoTemp;
-
-/*
-function accounts(type=""){
-	if (type===""){	
-		request.get('http://api.reimaginebanking.com/accounts?key=e37a0183d9b8d2e386401e45ec9dab74').then(function(res){
-			console.log(res.status, res.body);
-		});
-	} else {
-		request.get('http://api.reimaginebanking.com/accounts?type='+type+'&key=e37a0183d9b8d2e386401e45ec9dab74').then(function(res){
-			console.log(res.status, res.body);
-		});
-	}
-}
-*/
-
-/*
-function branches() {
-	var url = `http://api.reimaginebanking.com/branches?key=e37a0183d9b8d2e386401e45ec9dab74`;
-	console.log(url);
-    request.get(url).then(function(res) {
-    	console.log(res.body[0]);
-        // statusGet(res.status);
-        // resGet(res.body); //do something
-    });
-}
-*/
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,6 +21,7 @@ function accCall(id,type){
 }
 
 function then(id,queue,types,info){
+
 	if (queue.length != 0){
 		// console.log(info)
 		callInterface[queue.shift()](id,queue,types,info);
@@ -89,20 +64,39 @@ var callInterface = {
 		});
 	},
 	bills: function(id,queue=[],types=[],info=[]){
-		request.get(accCall(id,"bills")).then(function(res){
+		$.ajax({
+			url: accCall(id,"bills"),
+			success: function(res){
+				// console.log("bills");
+				types.push("bills");
+				info.push(res.body);
+				then(id,queue,types,info);
+			}
+		});
+		/*request.get(accCall(id,"bills")).then(function(res){
 			// console.log("bills");
 			types.push("bills");
 			info.push(res.body);
-			then(id,queue,types,info);
-		});
+			then(id,queue,types,info);*/
 	},
 
 	deposits: function(id,queue=[],types=[],info=[]){
-		request.get(accCall(id,"deposits")).then(function(res){
+		
+		$.ajax({
+			url: accCall(id,"deposits"),
+			sucess: function(res){
+				// console.log("bills");
+				console.log('ayy')
+				types.push("bills");
+				info.push(res.body);
+				then(id,queue,types,info);
+			}
+
+		/*request.get(accCall(id,"deposits")).then(function(res){
 			// console.log("deposits");
 			types.push("deposits");
 			info.push(res.body);
-			then(id,queue,types,info);
+			then(id,queue,types,info);*/
 		});
 	},
 
@@ -143,7 +137,8 @@ var callInterface = {
 
 //accounts();
 // console.log(getDate());
-callInterface['account']('59e23357a73e4942cdafe22e')
+// callInterface['account']('59e23357a73e4942cdafe22e')
+callInterface.deposits('59e23357a73e4942cdafe22d')
 //callInterface.bills("59e23357a73e4942cdafe22e",["deposits","loans","purchases","transfers","withdrawals"]);
 
 
