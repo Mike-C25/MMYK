@@ -26,8 +26,3 @@ function resGet(resId, resId2){
 		console.log(JSON.stringify(res.body,null,2));
 	})
 }
-
-//verfy user
-//collect account id
-// collect purchase data
-//
