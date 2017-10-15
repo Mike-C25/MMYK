@@ -15,7 +15,7 @@ $(document).ready(function() {
     //GET User Info
     function getUserInfo() {
         $.ajax({
-            url: 'https://api.reimaginebanking.com/accounts?key=e37a0183d9b8d2e386401e45ec9dab74',
+            url: 'http://api.reimaginebanking.com/accounts?key=e37a0183d9b8d2e386401e45ec9dab74',
             success: function(results) {
                 console.log(results);
                 //get customer ID
@@ -30,7 +30,7 @@ $(document).ready(function() {
 
     //create cards
     function queryCard(cID) {
-        url = 'https://api.reimaginebanking.com/customers/' + cID + '/accounts?key=e37a0183d9b8d2e386401e45ec9dab74';
+        url = 'http://api.reimaginebanking.com/customers/' + cID + '/accounts?key=e37a0183d9b8d2e386401e45ec9dab74';
         $.ajax({
             url: url,
             success: function(results) {
