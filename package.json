@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Mike-C25/MMYK#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "superagent": "^3.6.3"
   }
 }
