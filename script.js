@@ -1,34 +1,19 @@
 //modules
-var request = require('superagent');
+// var request = require('superagent');
 
 //globals
-var infoTemp;
+// var infoTemp;
 
-/*
-function accounts(type=""){
-	if (type===""){	
-		request.get('http://api.reimaginebanking.com/accounts?key=e37a0183d9b8d2e386401e45ec9dab74').then(function(res){
-			console.log(res.status, res.body);
-		});
-	} else {
-		request.get('http://api.reimaginebanking.com/accounts?type='+type+'&key=e37a0183d9b8d2e386401e45ec9dab74').then(function(res){
-			console.log(res.status, res.body);
-		});
-	}
-}
-*/
-
-/*
-function branches() {
-	var url = `http://api.reimaginebanking.com/branches?key=e37a0183d9b8d2e386401e45ec9dab74`;
-	console.log(url);
-    request.get(url).then(function(res) {
-    	console.log(res.body[0]);
-        // statusGet(res.status);
-        // resGet(res.body); //do something
-    });
-}
-*/
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~           XXX            ~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XXXXXXXXXXXXXX            ~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~           XXX            ~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~           XXX            ~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // creation of URLs for calls
 function accCall(id,type){
@@ -37,34 +22,79 @@ function accCall(id,type){
 
 function then(id,queue,types,info){
 	if (queue.length != 0){
-		console.log(info)
+		// console.log(info)
 		callInterface[queue.shift()](id,queue,types,info);
 	} else {
-		console.log(types);
+		console.log(info);
 	}
 }
 
-function balance(types,info){
+function balance(id,types,info){
+	console.log(info);
+	var currT;
+	var currI;
+	for (i in types){
+		if (types[i] == "account"){
 
+		}
+	}
 }
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                          ~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                          ~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                          ~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                          ~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //Different calls
 var callInterface = {
-	bills: function(id,queue=[],types=[],info=[]){
-		request.get(accCall(id,"bills")).then(function(res){
+	account: function(id,queue=[],types=[],info=[]){
+		request.get('http://api.reimaginebanking.com/accounts/'+id+'?key=e37a0183d9b8d2e386401e45ec9dab74').then(function(res){
 			// console.log("bills");
-			types.push("bills");
+			types.push("account");
 			info.push(res.body);
 			then(id,queue,types,info);
 		});
 	},
+	bills: function(id,queue=[],types=[],info=[]){
+		$.ajax({
+			url: accCall(id,"bills"),
+			success: function(res){
+				// console.log("bills");
+				types.push("bills");
+				info.push(res.body);
+				then(id,queue,types,info);
+			}
+		});
+		/*request.get(accCall(id,"bills")).then(function(res){
+			// console.log("bills");
+			types.push("bills");
+			info.push(res.body);
+			then(id,queue,types,info);*/
+	},
 
 	deposits: function(id,queue=[],types=[],info=[]){
-		request.get(accCall(id,"deposits")).then(function(res){
+		
+		$.ajax({
+			url: accCall(id,"deposits"),
+			sucess: function(res){
+				// console.log("bills");
+				types.push("bills");
+				info.push(res.body);
+				then(id,queue,types,info);
+			}
+
+		/*request.get(accCall(id,"deposits")).then(function(res){
 			// console.log("deposits");
 			types.push("deposits");
 			info.push(res.body);
-			then(id,queue,types,info);
+			then(id,queue,types,info);*/
 		});
 	},
 
@@ -103,11 +133,26 @@ var callInterface = {
 
 }
 
-// accounts();
-callInterface.bills("59e23357a73e4942cdafe22e",["deposits","loans","purchases","transfers","withdrawals"]);
+//accounts();
+// console.log(getDate());
+// callInterface['account']('59e23357a73e4942cdafe22e')
+callInterface.deposits('59e23357a73e4942cdafe22d')
+//callInterface.bills("59e23357a73e4942cdafe22e",["deposits","loans","purchases","transfers","withdrawals"]);
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~XXXX          XXXX        ~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   XXXX          XXXX     ~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~      XXXX          XXXX  ~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~          XXXX        XXXX~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // balance(types,info)
-balance(["bills","deposits","loans","purchases","transfers","withdrawals"],
+balance('aaa',["bills","deposits","loans","purchases","transfers","withdrawals"],
 	[{
 	_id: "bills",
     status: "pending",
@@ -163,7 +208,7 @@ balance(["bills","deposits","loans","purchases","transfers","withdrawals"],
     description: "string"
 	},
 	{
-	_id: "string",
+	_id: "withdrawals",
     type: "p2p",
     transaction_date: "2017-10-14",
     status: "pending",
