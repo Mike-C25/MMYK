@@ -5,12 +5,16 @@
 body {
     box-sizing: border-box;
     font: 100%/1.4 Optimist, Arial, Helvetica, sans-serif;
-    background: #0D74Af;
+   
     height: 100vh;
 }
 
 .main-content {
-    margin-top: 200px
+     background: #0D74Af;
+     max-width: 1500px;
+     margin: 0px auto;
+    padding-top: 150px;
+     height: 100vh;
 }
 
 section {
