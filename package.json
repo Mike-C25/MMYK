@@ -18,5 +18,7 @@
   "homepage": "https://github.com/Mike-C25/MMYK#readme",
   "dependencies": {
     "superagent": "^3.6.3"
-  }
+  },
+  "devDependencies": {},
+  "keywords": []
 }

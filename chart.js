@@ -1,4 +1,3 @@
-<script>
 
 var n = 6, // The number of series.
     m = 32; // The number of values per series.
@@ -103,6 +102,7 @@ function transitionStacked() {
 // http://leebyron.com/streamgraph/
 function bumps(m) {
   var values = [], i, j, w, x, y, z;
+  //REPLACE with API call
 
   // Initialize with uniform random values in [0.1, 0.2).
   for (i = 0; i < m; ++i) {
@@ -127,5 +127,3 @@ function bumps(m) {
 
   return values;
 }
-
-</script>
