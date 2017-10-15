@@ -1,6 +1,16 @@
 // var request = require('superagent');
 
 $(document).ready(function() {
+    //Sticky header
+    $(window).on('scroll', function() {
+        if ($(this).scrollTop() > 1) {
+            $('header').addClass("sticky");
+
+        } else {
+            $('header').removeClass("sticky");
+        }
+    })
+
 
     //GET User Info
     function getUserInfo() {
@@ -32,14 +42,15 @@ $(document).ready(function() {
                         var card = $('<div>').addClass('card');
                         console.log(card);
                         var html = '<p id="accID">' + results[a].nickname + ": " + results[a]._id + '</p>' +
-                        		   '<p class="rewards">' + 'Rewards #: ' + results[a].rewards+ '</p>' + 
-                        		   '<h2 class="balance">' + 'Balance: ' + convertWithCommas(results[a].balance) + '</h2>' +
-                        		   '<p class="type">' + 'Type: ' + results[a].type + '</p>';
+                            '<p class="rewards">' + 'Rewards #: ' + results[a].rewards + '</p>' +
+                            '<h2 class="balance">' + 'Balance: ' + convertWithCommas(results[a].balance) + '</h2>' +
+                            '<p class="type">' + 'Type: ' + results[a].type + '</p>';
 
-                       	console.log(html);
+                        console.log(html);
 
-                      	card.append(html);
-                      	cardsContainer.append(card);
+                        card.append(html);
+                        cardsContainer.append(card);
+                        setTimeout(function() { $(document).find(card).addClass('trigger') }, 200);
                         // var id = $('<p>').addClass('id').text(`${results[a].nickname}: ${results[a]._id}`);
                         // var rewards = $('<p>').addClass('rewards').text(`${results[a].rewards}`);
                         // var balance = $('<h2>').addClass('balance').text(convertWithCommas(results[a].balance));

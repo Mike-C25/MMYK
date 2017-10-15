@@ -51,8 +51,19 @@ header {
   right: 0px;
   width: 100%;
   position: fixed;
-  height: 200px;
-  background: white; }
+  height: 125px;
+  background: white;
+  z-index: 999;
+  transition: all .2s ease-in-out;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12); }
+  @media screen and (max-width: 920px) {
+    header {
+      height: 125px; } }
+  header.sticky {
+    height: 75px; }
+    header.sticky .logo {
+      width: 100px;
+      height: 50px; }
   header .logo {
     background: url("../images/Capital_One.svg");
     background-size: contain;
@@ -61,21 +72,40 @@ header {
     height: 150px;
     position: fixed;
     top: 25px;
-    left: 25px; }
+    left: 25px;
+    transition: all .2s ease-in-out; }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font: 100%/1.4 Optimist, Arial, Helvetica, sans-serif;
+  background: #0D74Af;
+  height: 100vh; }
+
+.main-content {
+  margin-top: 200px; }
 
 section:first-child {
-  margin-top: 200px; }
+  padding-top: 50px; }
 
 .card {
   position: relative;
-  width: 1000px;
+  width: 60%;
   margin: 0px auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   height: 300px;
   background: white;
-  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12); }
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all .3s ease-in-out;
+  cursor: pointer; }
+  @media screen and (max-width: 1200px) {
+    .card {
+      width: 95%; } }
+  .card.trigger {
+    opacity: 1;
+    transform: translateY(0); }
   .card #accID {
     position: absolute;
     top: 10px;
