@@ -25,3 +25,5 @@ app.use(express.static('./'));
 app.get('./', function(request, response) {
     response.sendFile('index.html',{ root: __dirname});
 });
+
+//temp
